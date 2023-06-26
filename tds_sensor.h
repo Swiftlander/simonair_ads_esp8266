@@ -3,11 +3,8 @@
 // ==========
 byte pin_tds = 32; // Pin analog TDS
 
-<<<<<<< HEAD
-float raw_adc_tds, voltage_tds = 0, value_tds = 0, value_tds_cal = 0;
-=======
 float raw_adc_tds, voltage_tds = 0, value_tds = 0;
->>>>>>> 39b9bb9ab55ebde30e73af6b838a8042048a64d9
+
 int value_temperature_dummy = 25;
 
 void tdsSensor()

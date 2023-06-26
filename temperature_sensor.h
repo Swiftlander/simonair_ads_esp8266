@@ -2,11 +2,8 @@
 #include <DallasTemperature.h> // Library Sensor Suhu
 #include <OneWire.h> // Library Sensor Suhu
 
-<<<<<<< HEAD
-byte pin_temperature = 25;   // GPIO pin where the DS18B20 is connected to  //25
-=======
 int pin_temperature = 4;   // GPIO pin where the DS18B20 is connected to  //25
->>>>>>> 39b9bb9ab55ebde30e73af6b838a8042048a64d9
+
 
 // ==========
 // SUHU

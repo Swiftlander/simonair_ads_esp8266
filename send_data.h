@@ -1,7 +1,6 @@
 #include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
 
-<<<<<<< HEAD
 // Akuarium 8 = dO7NeYGaBo52
 // Akuarium 9 = xpnyHMCHUfzb
 // Akuarium 10 = U9HfLIhLQJGQ
@@ -10,30 +9,17 @@ String nama_alat = "Akuarium 10";
 String id_alat = "U9HfLIhLQJGQ";
 
 String serverName = "http://103.117.57.130/";
-=======
-// Akuarium 1 = mY6cSeR2Cj0L
-// AKuarium 2 = nxSmsSXTyf36
-// Akuarium 3 = zrKht1cq5fPL
-// Akuarium 4 = dripROD0IdEl
-// Akuarium 5 = kn85wb47rdmD
-// Akuarium 6 = mljxTvTevUAr
-
-String nama_alat = "Akuarium 3";
-const String id_alat = "zrKht1cq5fPL";
 
 byte server[] = {103, 117, 57, 130};
 WiFiClient client;
 const int httpPort = 80;
 String url;
 unsigned long timeout;
->>>>>>> 39b9bb9ab55ebde30e73af6b838a8042048a64d9
 
 void sendData(){
   
   WiFiClient client;
   HTTPClient http;
-
-<<<<<<< HEAD
   String suhu = String(value_temperature);
   String ph = String(value_ph);
   String amonia = String(value_mq_ppm);
@@ -65,8 +51,7 @@ void sendData(){
       Serial.print("Error code: ");
       Serial.println(httpResponseCode);
       }
-  // Free resources
-=======
+
     float suhu = value_temperature;
     float ph = value_ph;
     float amonia = value_mq_ppm;
@@ -103,7 +88,6 @@ void sendData(){
     Serial.println(httpResponseCode);
   }
 
->>>>>>> 39b9bb9ab55ebde30e73af6b838a8042048a64d9
   http.end();
 
 }

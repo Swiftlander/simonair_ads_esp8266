@@ -11,22 +11,12 @@ float RL = 4.7;    //The value of resistor RL is 47K
 float m  = -0.263;  //Enter calculated Slope 
 float b = 0.42;    //Enter calculated intercept
 
-<<<<<<< HEAD
 float analog_value_searchRO;
 float VRL_searchRO;
 float Rs_searchRO;
 float Ro_searchRO;
 float Ro_final;
 
-=======
-
-float analog_value_searchRO;
-float VRL_searchRO;
-float Rs_searchRO;
-float Ro_searchRO;
-float Ro_final;
-
->>>>>>> 39b9bb9ab55ebde30e73af6b838a8042048a64d9
 float VRL; //Voltage drop across the MQ sensor
 float Rs; //Sensor resistance at gas concentration 
 float ratio; //Define variable for ratio
