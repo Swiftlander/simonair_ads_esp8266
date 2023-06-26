@@ -1,0 +1,21 @@
+void tssTurbiditySensor(){
+
+    for (int i = 0; i < SAMPLE_VALUE ; i++){
+        raw_adc_tss = analogRead(pin_tss);
+        store_adc_value_tss[i] = raw_adc_tss;
+    }
+
+    for (int i = 0; i < SAMPLE_VALUE; i++){
+        sum_all_array_value_tss += store_adc_value_tss[i];
+    }
+
+    adc_tss = sum_all_array_value_tss / SAMPLE_VALUE;
+    voltage_tss = adc_tss * (3.3 / 4095.0);
+
+    Serial.print("ADC TSS: ");
+    Serial.println(adc_tss);
+
+    Serial.print("Voltage TSS: ");
+    Serial.println(voltage_tss);
+    
+}

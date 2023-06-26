@@ -1,0 +1,25 @@
+void phSensor(){
+    for (int i = 0; i < SAMPLE_VALUE ; i++){
+        raw_adc_ph = analogRead(pin_ph);
+        store_adc_value_ph[i] = raw_adc_ph;
+    }
+
+    for (int i = 0; i < SAMPLE_VALUE; i++){
+        sum_all_array_value_ph += store_adc_value_ph[i];
+    }
+
+    adc_ph = sum_all_array_value_ph / SAMPLE_VALUE;
+
+    voltage_ph = adc_ph * (3.3 / 4095.0);
+
+    value_ph = -5.70 * voltage_ph + calibrationValue_ph;
+    PH_step = (PH4 - PH7) / 3;
+    value_ph = (7.00f + ((PH7 - voltage_ph) / PH_step)) + 0.9f;
+
+    Serial.print("ADC PH: ");
+    Serial.println(adc_ph);
+    Serial.print("Voltage PH: ");
+    Serial.println(voltage_ph);
+    Serial.print("Nilai PH: ");
+    Serial.println(voltage_ph);
+}
