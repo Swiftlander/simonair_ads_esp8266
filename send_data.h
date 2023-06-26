@@ -52,42 +52,6 @@ void sendData(){
       Serial.println(httpResponseCode);
       }
 
-    float suhu = value_temperature;
-    float ph = value_ph;
-    float amonia = value_mq_ppm;
-    float tss = value_tss;
-    float tds = value_tds;
-    float salinitas = value_salinity;
-    // Serial.println(suhu);
-    // Serial.println(ph);
-    // Serial.println(amonia);
-    // Serial.println(tss);
-    // Serial.println(tds);
-    // Serial.println(salinitas);
- String url = "http://103.117.57.130/api/monitoring/" +
-               String(id_alat) + "/" +
-               nama_alat + "/" +
-               String(ph) + "/" +
-               String(suhu) + "/" +
-               String(amonia) + "/" +
-               String(tss) + "/" +
-               String(tds) + "/" +
-               String(salinitas);
-
-  // Mengirim HTTP GET request ke server
-  HTTPClient http;
-  http.begin(url);
-
-  int httpResponseCode = http.GET();
-  if (httpResponseCode == HTTP_CODE_OK) {
-    String response = http.getString();
-    Serial.println("Data berhasil dikirim");
-    Serial.println("Response: " + response);
-  } else {
-    Serial.print("HTTP Error code: ");
-    Serial.println(httpResponseCode);
-  }
-
   http.end();
 
 }
