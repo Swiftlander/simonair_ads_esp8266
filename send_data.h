@@ -1,12 +1,13 @@
 #include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
 
+// Akuarium 7 = HF22Bd9A71hh
 // Akuarium 8 = dO7NeYGaBo52
 // Akuarium 9 = xpnyHMCHUfzb
 // Akuarium 10 = U9HfLIhLQJGQ
 
-String nama_alat = "Akuarium 10";
-String id_alat = "U9HfLIhLQJGQ";
+String nama_alat = "Akuarium 9";
+String id_alat = "xpnyHMCHUfzb";
 
 String serverName = "http://103.117.57.130/";
 

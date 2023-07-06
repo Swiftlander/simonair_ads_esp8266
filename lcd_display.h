@@ -42,7 +42,7 @@ void statusParamsText(int params_row,
   } 
   message_params_0 = message_params_0 + " "; 
   for (int pos = 0; pos < message_params_0.length(); pos++) {
-    lcd.setCursor(0, row);
+    lcd.setCursor(0, params_row);
     lcd.print(message_params_0.substring(pos, pos + lcdColumns));
     delay(delayTime);
   }
@@ -59,7 +59,6 @@ void statusQualityText(int params_row,
                 int delayTime, 
                 int lcdColumns) {
   
-
   String quality_result;
   String category_temperature, category_ph, category_tds, category_tss, category_salinity, category_mq;
 
