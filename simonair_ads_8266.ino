@@ -6,6 +6,8 @@ int indikator = 2;
 // KONFIGURASI LED INTERNAL | END
 // ====================================================
 
+unsigned long currentTime = 0;
+
 #include "ads_setup.h"
 
 #include "temperature_sensor.h"
@@ -35,24 +37,26 @@ unsigned long prevCurrentTimeSendData = 0;
 unsigned long intervalPrintSerialWebTime = 20000;
 unsigned long prevCurrentTimePrintSerialWeb = 0;
 
-unsigned long intervalPrintLCD = 20000;
+unsigned long intervalPrintLCD = 15000;
 unsigned long prevCurrentTimePrintLCD = 0;
 
 void setup(){
     Serial.begin(115200);
     pinMode(indikator, OUTPUT); 
+    
     setup_ads();
     setupLcd();
 }
 
 void loop(){
     
-  unsigned long currentTime = millis();
+  currentTime = millis();
 
   if (WiFi.status() != WL_CONNECTED){
     initWiFi();
     setup_ota_serial_web();
   }
+
 
   temperatureSensorFunction();
   phSensor();
@@ -97,13 +101,12 @@ void loop(){
     if(currentTime - prevCurrentTimePrintLCD >= intervalPrintLCD){
 
       statusQualityText(1, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm);
-      statusParamsText(0, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 500);
+      statusParamsText(0, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 1000);
       
       prevCurrentTimePrintLCD = currentTime;
     }    
 
+      // statusQualityText(1, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm);
+      // statusParamsText(0, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 1000);
 
-
-  // statusParamsText(0, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 400, 16);
-  // statusQualityText(1, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 400, 16);
 }

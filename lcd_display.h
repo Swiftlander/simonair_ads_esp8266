@@ -31,6 +31,10 @@ void statusParamsText(int params_row,
                 int delayTime
                 ) {
   
+
+  unsigned long intervalShiftingText = delayTime;
+  unsigned long prevCurrentTimeShiftingText = 0;
+  
   message_params_0 = "Temp(Cel)=" + String(temperature_val) + " | " +
                      "PH=" + String(ph_val) + " | " +
                      "TDS(ppm)=" + String(tds_val) + " | " +
@@ -41,12 +45,35 @@ void statusParamsText(int params_row,
   for (int i=0; i < lcdColumns; i++) {
     message_params_0 = " " + message_params_0;  
   } 
-  message_params_0 = message_params_0 + " "; 
+  message_params_0 = message_params_0 + " ";
+
+  // ========================================================
+  // ========================================================
+
+  // ========== Version 1 | Start ==========
   for (int pos = 0; pos < message_params_0.length(); pos++) {
     lcd.setCursor(0, params_row);
     lcd.print(message_params_0.substring(pos, pos + lcdColumns));
     delay(delayTime);
   }
+  // ========== Version 1 | End ==========
+  
+  // ========== Version 2 | Start ==========
+  // Serial.println();
+  // Serial.println("Waktu");
+  // if(currentTime - prevCurrentTimeShiftingText >= intervalShiftingText){
+  //   for (int pos = 0; pos < message_params_0.length(); pos++) {
+  //       lcd.setCursor(0, params_row);
+  //       lcd.print(message_params_0.substring(pos, pos + lcdColumns));
+  //       yield();
+  //       prevCurrentTimeShiftingText = currentTime;
+  //   }
+  // }
+  // ========== Version 2 | End ==========
+  
+  // ========================================================
+  // ========================================================
+
 
 }
 
