@@ -19,23 +19,30 @@ int indikator = 2;
 #include "send_data.h"
 
 #include "ota_serialWeb.h"
-// #include "lcd_display.h"
+#include "lcd_display.h"
+
 
 // INTERVAL PEMBACAAN
 unsigned long intervalSendTime = 30000;
 unsigned long prevCurrentTimeSend = 0;
+
 unsigned long intervalPrintTime = 2000;
 unsigned long prevCurrentTimePrint = 0;
+
 unsigned long intervalSendDataTime = 15000;
 unsigned long prevCurrentTimeSendData = 0;
+
 unsigned long intervalPrintSerialWebTime = 20000;
 unsigned long prevCurrentTimePrintSerialWeb = 0;
+
+unsigned long intervalPrintLCD = 20000;
+unsigned long prevCurrentTimePrintLCD = 0;
 
 void setup(){
     Serial.begin(115200);
     pinMode(indikator, OUTPUT); 
     setup_ads();
-    // setupLcd();
+    setupLcd();
 }
 
 void loop(){
@@ -67,17 +74,17 @@ void loop(){
     }
  
 
-    if (currentTime - prevCurrentTimePrintSerialWeb >= intervalPrintSerialWebTime){
-      if (WiFi.status() == WL_CONNECTED){
-          temperature_value_print_to_web_serial();
-          ph_value_print_to_web_serial();
-          tds_value_print_to_web_serial();
-          tss_value_print_to_web_serial();
-          salinity_value_print_to_web_serial();
-          mq_value_print_to_web_serial();
-      }
-      prevCurrentTimePrintSerialWeb = currentTime;
-    }
+    // if (currentTime - prevCurrentTimePrintSerialWeb >= intervalPrintSerialWebTime){
+    //   if (WiFi.status() == WL_CONNECTED){
+    //       temperature_value_print_to_web_serial();
+    //       ph_value_print_to_web_serial();
+    //       tds_value_print_to_web_serial();
+    //       tss_value_print_to_web_serial();
+    //       salinity_value_print_to_web_serial();
+    //       mq_value_print_to_web_serial();
+    //   }
+    //   prevCurrentTimePrintSerialWeb = currentTime;
+    // }
 
 
     if(currentTime - prevCurrentTimeSendData >= intervalSendDataTime){
@@ -85,8 +92,18 @@ void loop(){
         sendData();
       }
       prevCurrentTimeSendData = currentTime;
+    }
+
+    if(currentTime - prevCurrentTimePrintLCD >= intervalPrintLCD){
+
+      statusQualityText(1, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm);
+      statusParamsText(0, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 500);
+      
+      prevCurrentTimePrintLCD = currentTime;
     }    
 
 
-  // statusParamsText(0, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 500, 16);
+
+  // statusParamsText(0, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 400, 16);
+  // statusQualityText(1, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 400, 16);
 }
