@@ -37,8 +37,8 @@ unsigned long prevCurrentTimeSendData = 0;
 unsigned long intervalPrintSerialWebTime = 20000;
 unsigned long prevCurrentTimePrintSerialWeb = 0;
 
-unsigned long intervalPrintLCD = 15000;
-unsigned long prevCurrentTimePrintLCD = 0;
+unsigned long intervalSwitchTextLCD = 1000;
+unsigned long prevCurrentTimeSwitchTextLCD = 0;
 
 void setup(){
     Serial.begin(115200);
@@ -98,15 +98,12 @@ void loop(){
       prevCurrentTimeSendData = currentTime;
     }
 
-    if(currentTime - prevCurrentTimePrintLCD >= intervalPrintLCD){
+    if(currentTime - prevCurrentTimeSwitchTextLCD >= intervalSwitchTextLCD){
 
       statusQualityText(1, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm);
-      statusParamsText(0, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 1000);
+      statusParamsText(0, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm);
       
-      prevCurrentTimePrintLCD = currentTime;
+      prevCurrentTimeSwitchTextLCD = currentTime;
     }    
-
-      // statusQualityText(1, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm);
-      // statusParamsText(0, 16, value_temperature, value_ph, value_tds, value_tss, value_salinity, value_mq_ppm, 1000);
-
+    
 }
