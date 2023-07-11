@@ -4,11 +4,11 @@
 int lcdColumns = 16;
 int lcdRows = 2;
 
-// set LCD address, number of columns and rows
-// if you don't know your display address, run an I2C scanner sketch
+int flagForParams = 1;
+String messageParamsLCD;
+
 LiquidCrystal_I2C lcd(0x27, lcdColumns, lcdRows);  
 
-String message_params_0, message_quality_1;
 
 void setupLcd(){
   // initialize LCD
@@ -20,62 +20,103 @@ void setupLcd(){
   delay(2000);
 }
 
-void statusParamsText(int params_row,
-                int lcdColumns,
-                float temperature_val,
-                float ph_val, 
-                float tds_val, 
-                float tss_val, 
-                float salinity_val, 
-                float mq_val,
-                int delayTime
-                ) {
-  
 
-  unsigned long intervalShiftingText = delayTime;
-  unsigned long prevCurrentTimeShiftingText = 0;
-  
-  message_params_0 = "Temp(Cel)=" + String(temperature_val) + " | " +
-                     "PH=" + String(ph_val) + " | " +
-                     "TDS(ppm)=" + String(tds_val) + " | " +
-                     "TSS(Volt)=" + String(tss_val) + " | " +
-                     "Sal(ppm)=" + String(salinity_val) + " | " +
-                     "Amonia(ppm)=" + String(mq_val) + " | ";
+void statusParamsText(int lcdRow, int MaxLcdColumn, float temperature_val, float ph_val, float tds_val, float tss_val, float salinity_val, float ammonia_val) 
+{
+  if (flagForParams == 1){
+    showToLcd_temperature(lcdRow, MaxLcdColumn, temperature_val);
+    flagForParams += 1;
 
-  for (int i=0; i < lcdColumns; i++) {
-    message_params_0 = " " + message_params_0;  
-  } 
-  message_params_0 = message_params_0 + " ";
+  } else if(flagForParams == 2){
+    showToLcd_ph(lcdRow, MaxLcdColumn, ph_val);
+    flagForParams += 1;
 
-  // ========================================================
-  // ========================================================
+  } else if(flagForParams == 3){
+    showToLcd_tds(lcdRow, MaxLcdColumn, tds_val);
+    flagForParams += 1;
 
-  // ========== Version 1 | Start ==========
-  for (int pos = 0; pos < message_params_0.length(); pos++) {
-    lcd.setCursor(0, params_row);
-    lcd.print(message_params_0.substring(pos, pos + lcdColumns));
-    delay(delayTime);
+  } else if(flagForParams == 4){
+    showToLcd_tss(lcdRow, MaxLcdColumn, tss_val);
+    flagForParams += 1;
+
+  } else if(flagForParams == 5){
+    showToLcd_salinity(lcdRow, MaxLcdColumn, salinity_val);
+    flagForParams += 1;
+
+  } else if(flagForParams == 6){
+    showToLcd_ammonia(lcdRow, MaxLcdColumn, ammonia_val);
+    flagForParams = 1;
+
   }
-  // ========== Version 1 | End ==========
-  
-  // ========== Version 2 | Start ==========
-  // Serial.println();
-  // Serial.println("Waktu");
-  // if(currentTime - prevCurrentTimeShiftingText >= intervalShiftingText){
-  //   for (int pos = 0; pos < message_params_0.length(); pos++) {
-  //       lcd.setCursor(0, params_row);
-  //       lcd.print(message_params_0.substring(pos, pos + lcdColumns));
-  //       yield();
-  //       prevCurrentTimeShiftingText = currentTime;
-  //   }
-  // }
-  // ========== Version 2 | End ==========
-  
-  // ========================================================
-  // ========================================================
+}
 
+void showToLcd_temperature(int lcdRow, int MaxLcdColumns, float temperature_val){
+  for (int cursorPos = 0; cursorPos < MaxLcdColumns; cursorPos++){
+    lcd.setCursor(cursorPos, lcdRow);
+    lcd.print(" ");
+  }
+
+  lcd.setCursor(0, lcdRow);
+  messageParamsLCD = "Temp(Cel): " + String(temperature_val);
+  lcd.print(messageParamsLCD);
+}
+
+void showToLcd_ph(int lcdRow, int MaxLcdColumns, float ph_val){
+  for (int cursorPos = 0; cursorPos < MaxLcdColumns; cursorPos++){
+    lcd.setCursor(cursorPos, lcdRow);
+    lcd.print(" ");
+  }
+
+  lcd.setCursor(0, lcdRow);
+  messageParamsLCD = "PH: " + String(ph_val);
+  lcd.print(messageParamsLCD);
+}
+
+void showToLcd_tds(int lcdRow, int MaxLcdColumns, float tds_val){
+  for (int cursorPos = 0; cursorPos < MaxLcdColumns; cursorPos++){
+    lcd.setCursor(cursorPos, lcdRow);
+    lcd.print(" ");
+  }
+
+  lcd.setCursor(0, lcdRow);
+  messageParamsLCD = "TDS(ppm): " + String(tds_val);
+  lcd.print(messageParamsLCD);
 
 }
+
+void showToLcd_tss(int lcdRow, int MaxLcdColumns, float tss_val){
+  for (int cursorPos = 0; cursorPos < MaxLcdColumns; cursorPos++){
+    lcd.setCursor(cursorPos, lcdRow);
+    lcd.print(" ");
+  }
+
+  lcd.setCursor(0, lcdRow);
+  messageParamsLCD = "TSS(Volt): " + String(tss_val);
+  lcd.print(messageParamsLCD);
+}
+
+void showToLcd_salinity(int lcdRow, int MaxLcdColumns, float salinity_val){
+  for (int cursorPos = 0; cursorPos < MaxLcdColumns; cursorPos++){
+    lcd.setCursor(cursorPos, lcdRow);
+    lcd.print(" ");
+  }
+
+  lcd.setCursor(0, lcdRow);
+  messageParamsLCD = "Sal(ppm): " + String(salinity_val);
+  lcd.print(messageParamsLCD);
+}
+
+void showToLcd_ammonia(int lcdRow, int MaxLcdColumns, float ammonia_val){
+  for (int cursorPos = 0; cursorPos < MaxLcdColumns; cursorPos++){
+    lcd.setCursor(cursorPos, lcdRow);
+    lcd.print(" ");
+  }
+
+  lcd.setCursor(0, lcdRow);
+  messageParamsLCD = "Ammo(ppm): " + String(ammonia_val);
+  lcd.print(messageParamsLCD);
+}
+
 
 void statusQualityText(int quality_row, int lcdColumns, float temperature_val, float ph_val, float tds_val, float tss_val, float salinity_val, float mq_val) {
   
