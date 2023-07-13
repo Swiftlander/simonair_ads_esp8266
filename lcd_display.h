@@ -21,35 +21,6 @@ void setupLcd(){
 }
 
 
-void statusParamsText(int lcdRow, int MaxLcdColumn, float temperature_val, float ph_val, float tds_val, float tss_val, float salinity_val, float ammonia_val) 
-{
-  if (flagForParams == 1){
-    showToLcd_temperature(lcdRow, MaxLcdColumn, temperature_val);
-    flagForParams += 1;
-
-  } else if(flagForParams == 2){
-    showToLcd_ph(lcdRow, MaxLcdColumn, ph_val);
-    flagForParams += 1;
-
-  } else if(flagForParams == 3){
-    showToLcd_tds(lcdRow, MaxLcdColumn, tds_val);
-    flagForParams += 1;
-
-  } else if(flagForParams == 4){
-    showToLcd_tss(lcdRow, MaxLcdColumn, tss_val);
-    flagForParams += 1;
-
-  } else if(flagForParams == 5){
-    showToLcd_salinity(lcdRow, MaxLcdColumn, salinity_val);
-    flagForParams += 1;
-
-  } else if(flagForParams == 6){
-    showToLcd_ammonia(lcdRow, MaxLcdColumn, ammonia_val);
-    flagForParams = 1;
-
-  }
-}
-
 void showToLcd_temperature(int lcdRow, int MaxLcdColumns, float temperature_val){
   for (int cursorPos = 0; cursorPos < MaxLcdColumns; cursorPos++){
     lcd.setCursor(cursorPos, lcdRow);
@@ -116,6 +87,36 @@ void showToLcd_ammonia(int lcdRow, int MaxLcdColumns, float ammonia_val){
   messageParamsLCD = "Ammo(ppm): " + String(ammonia_val);
   lcd.print(messageParamsLCD);
 }
+
+void statusParamsText(int lcdRow, int MaxLcdColumn, float temperature_val, float ph_val, float tds_val, float tss_val, float salinity_val, float ammonia_val) 
+{
+  if (flagForParams == 1){
+    showToLcd_temperature(lcdRow, MaxLcdColumn, temperature_val);
+    flagForParams += 1;
+
+  } else if(flagForParams == 2){
+    showToLcd_ph(lcdRow, MaxLcdColumn, ph_val);
+    flagForParams += 1;
+
+  } else if(flagForParams == 3){
+    showToLcd_tds(lcdRow, MaxLcdColumn, tds_val);
+    flagForParams += 1;
+
+  } else if(flagForParams == 4){
+    showToLcd_tss(lcdRow, MaxLcdColumn, tss_val);
+    flagForParams += 1;
+
+  } else if(flagForParams == 5){
+    showToLcd_salinity(lcdRow, MaxLcdColumn, salinity_val);
+    flagForParams += 1;
+
+  } else if(flagForParams == 6){
+    showToLcd_ammonia(lcdRow, MaxLcdColumn, ammonia_val);
+    flagForParams = 1;
+
+  }
+}
+
 
 
 void statusQualityText(int quality_row, int lcdColumns, float temperature_val, float ph_val, float tds_val, float tss_val, float salinity_val, float mq_val) {
