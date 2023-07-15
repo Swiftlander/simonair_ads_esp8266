@@ -5,16 +5,10 @@
 
 float raw_adc_ph, voltage_ph, value_ph;
 
-// kalibrasi Ph
-// float PH4 = 2.96f;
-// float PH7 = 2.6f;
-
 // Akuarium 7 = (voltage_ph - 3.7436) / -0.1693;
 // Akuarium 8 =  (voltage_ph - 4.1593) / -0.0993;
 // Akuarium 9 = (voltage_ph - 3.8829) / -0.1848;
 // Akuarium 10 = (voltage_ph - 3.8356) / -0.1746;
-
-
 
 void phSensor(){
     raw_adc_ph = read_by_ads_ph();
