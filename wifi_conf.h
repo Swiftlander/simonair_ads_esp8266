@@ -4,26 +4,26 @@
 #include <ESP8266WiFi.h>
 
 // ======== WIFI 1 ========
-const char* ssid = "Acer";
-const char* password = "1029384756";
+// const char* ssid = "Acer";
+// const char* password = "1029384756";
 
-IPAddress local_IP(192,168,137,100);
-IPAddress gateway(192,168,137,1);
-IPAddress subnet(255, 255, 255, 0);
-IPAddress primaryDNS(8, 8, 8, 8);
-IPAddress secondaryDNS(8, 8, 4, 4);
+// IPAddress local_IP(192,168,137,100);
+// IPAddress gateway(192,168,137,1);
+// IPAddress subnet(255, 255, 255, 0);
+// IPAddress primaryDNS(8, 8, 8, 8);
+// IPAddress secondaryDNS(8, 8, 4, 4);
 // ======== WIFI 1 ========
 
 
 // ======== WIFI 2 ========
-// const char* ssid = "Canon-Pixma-E460";
-// const char* password = "Ikanlele1kilo";
+const char* ssid = "Canon-Pixma-E460";
+const char* password = "Ikanlele1kilo";
 
-// IPAddress local_IP(172, 22, 38, 15);
-// IPAddress gateway(172, 22, 38, 254);
-// IPAddress subnet(255, 255, 255, 0);
-// IPAddress primaryDNS(8, 8, 8, 8);
-// IPAddress secondaryDNS(8, 8, 4, 4);
+IPAddress local_IP(172, 22, 38, 19);
+IPAddress gateway(172, 22, 38, 254);
+IPAddress subnet(255, 255, 255, 0);
+IPAddress primaryDNS(8, 8, 8, 8);
+IPAddress secondaryDNS(8, 8, 4, 4);
 // ======== WIFI 2 ========
 
 void initWiFi() {

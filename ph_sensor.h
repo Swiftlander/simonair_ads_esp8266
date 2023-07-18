@@ -17,7 +17,7 @@ float raw_adc_ph, voltage_ph, value_ph;
 void phSensor(){
     raw_adc_ph = read_by_ads_ph();
     voltage_ph = ads.computeVolts(raw_adc_ph);
-    value_ph = (voltage_ph - 3.8356) / -0.1746;
+    value_ph = (voltage_ph - 3.8829) / -0.1848;
 }
 
 void phPrintToSerialMonitor(){

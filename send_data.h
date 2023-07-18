@@ -8,8 +8,8 @@
 // Akuarium 11 = eD5GEfu6iAYP
 
 
-String nama_alat = "Akuarium 11";
-String id_alat = "eD5GEfu6iAYP";
+String nama_alat = "Akuarium 9";
+String id_alat = "xpnyHMCHUfzb";
 
 String serverName = "http://103.117.57.130/";
 
