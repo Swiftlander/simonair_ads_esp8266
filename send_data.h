@@ -6,10 +6,10 @@
 // Akuarium 9 = xpnyHMCHUfzb
 // Akuarium 10 = U9HfLIhLQJGQ
 // Akuarium 11 = eD5GEfu6iAYP
+// Akuarium 12 = OZMCyBAnnGve
 
-
-String nama_alat = "Akuarium 9";
-String id_alat = "xpnyHMCHUfzb";
+String nama_alat = "Akuarium 7";
+String id_alat = "HF22Bd9A71hh";
 
 String serverName = "http://103.117.57.130/";
 

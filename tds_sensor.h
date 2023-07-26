@@ -3,6 +3,12 @@
 // ==========
 byte pin_tds = 32; // Pin analog TDS
 
+// Default = 0.60
+// Akuarium 8 = 0.67
+// Akuarium 9 = 0.86
+// Akuarium 10 = 0.27
+// Akuarium 12 = 0.72
+
 float raw_adc_tds, voltage_tds = 0, value_tds = 0;
 
 int value_temperature_dummy = 25;

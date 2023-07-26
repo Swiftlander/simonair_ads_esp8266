@@ -17,7 +17,7 @@ void setupLcd(){
   lcd.backlight();
   lcd.setCursor(0,0);
   lcd.print("SIMONAIR");
-  delay(2000);
+  delay(1000);
 }
 
 
@@ -88,8 +88,6 @@ void showToLcd_ammonia(int lcdRow, int MaxLcdColumns, float ammonia_val){
   lcd.print(messageParamsLCD);
 }
 
-
-
 void statusParamsText(int lcdRow, int MaxLcdColumn, float temperature_val, float ph_val, float tds_val, float tss_val, float salinity_val, float ammonia_val) 
 {
   if (flagForParams == 1){
@@ -118,7 +116,6 @@ void statusParamsText(int lcdRow, int MaxLcdColumn, float temperature_val, float
 
   }
 }
-
 
 void statusQualityText(int quality_row, int lcdColumns, float temperature_val, float ph_val, float tds_val, float tss_val, float salinity_val, float mq_val) {
   

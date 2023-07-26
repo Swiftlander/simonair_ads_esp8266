@@ -19,7 +19,7 @@
 const char* ssid = "Canon-Pixma-E460";
 const char* password = "Ikanlele1kilo";
 
-IPAddress local_IP(172, 22, 38, 19);
+IPAddress local_IP(172, 22, 38, 17);
 IPAddress gateway(172, 22, 38, 254);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress primaryDNS(8, 8, 8, 8);

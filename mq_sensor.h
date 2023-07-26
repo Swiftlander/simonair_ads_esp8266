@@ -32,7 +32,7 @@ void readMQ(){
   Rs_searchRO = ((5.0/VRL)-1) * RL;
   Ro_searchRO = Rs_searchRO/3.6;
   Ro_final = Ro_searchRO;
-  delay(1000); //delay of 1sec
+  // delay(1000); //delay of 1sec
   
   VRL = voltage_mq; //Measure the voltage drop and convert to 0-5V
   Rs = ((5.0*RL)/VRL)-RL; //Use formula to get Rs value
