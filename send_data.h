@@ -8,10 +8,10 @@
 // Akuarium 11 = eD5GEfu6iAYP
 // Akuarium 12 = OZMCyBAnnGve
 
-String nama_alat = "Akuarium 7";
-String id_alat = "HF22Bd9A71hh";
+String nama_alat = "Akuarium 8";
+String id_alat = "dO7NeYGaBo52";
 
-String serverName = "http://103.117.57.130/";
+String serverName = "http://simonair.portalsvipb.com/";
 
 byte server[] = {103, 117, 57, 130};
 WiFiClient client;

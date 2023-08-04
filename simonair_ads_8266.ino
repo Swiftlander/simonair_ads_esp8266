@@ -34,7 +34,7 @@ unsigned long prevCurrentTimePrint = 0;
 unsigned long intervalSendDataTime = 15000;
 unsigned long prevCurrentTimeSendData = 0;
 
-unsigned long intervalPrintSerialWebTime = 20000;
+unsigned long intervalPrintSerialWebTime = 10000;
 unsigned long prevCurrentTimePrintSerialWeb = 0;
 
 unsigned long intervalSwitchTextLCD = 1000;
@@ -79,17 +79,17 @@ void loop(){
     }
  
 
-    // if (currentTime - prevCurrentTimePrintSerialWeb >= intervalPrintSerialWebTime){
-    //   if (WiFi.status() == WL_CONNECTED){
-    //       temperature_value_print_to_web_serial();
-    //       ph_value_print_to_web_serial();
-    //       tds_value_print_to_web_serial();
-    //       tss_value_print_to_web_serial();
-    //       salinity_value_print_to_web_serial();
-    //       mq_value_print_to_web_serial();
-    //   }
-    //   prevCurrentTimePrintSerialWeb = currentTime;
-    // }
+    if (currentTime - prevCurrentTimePrintSerialWeb >= intervalPrintSerialWebTime){
+      if (WiFi.status() == WL_CONNECTED){
+          temperature_value_print_to_web_serial();
+          ph_value_print_to_web_serial();
+          tds_value_print_to_web_serial();
+          tss_value_print_to_web_serial();
+          salinity_value_print_to_web_serial();
+          mq_value_print_to_web_serial();
+      }
+      prevCurrentTimePrintSerialWeb = currentTime;
+    }
 
 
     if(currentTime - prevCurrentTimeSendData >= intervalSendDataTime){
