@@ -6,6 +6,9 @@ int indikator = 2;
 // KONFIGURASI LED INTERNAL | END
 // ====================================================
 
+// Hanya support akuarium 7 sampai 12
+const int nomor_akuarium = 7;
+
 unsigned long currentTime = 0;
 
 #include "ads_setup.h"

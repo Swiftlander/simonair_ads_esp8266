@@ -9,6 +9,7 @@ byte pin_tds = 32; // Pin analog TDS
 // Akuarium 10 = 0.27
 // Akuarium 12 = 0.72
 
+// Hasil Regresi Linear
 // Akuarium 7 = (0.528 * value_tds) + -14;
 // Akuarium 8 = (0.511 * value_tds) + -14.5;
 // Akuarium 10 = (0.297 * value_tds) + -4.05;
@@ -25,7 +26,31 @@ void tdsSensor()
   float compensationCoefficient = 1.0 + 0.02 * (value_temperature - 25.0);
   float compensationVoltage = voltage_tds / compensationCoefficient;
   value_tds = (133.42 * compensationVoltage * compensationVoltage * compensationVoltage - 255.86 * compensationVoltage * compensationVoltage + 857.39 * compensationVoltage) * 1;
-  value_tds = (0.511 * value_tds) + -14.5;
+  
+  if(nomor_akuarium == 7){
+    value_tds = (0.528 * value_tds) + -14;
+  }
+  
+  if(nomor_akuarium == 8){
+    value_tds = (0.511 * value_tds) + -14.5;
+  }
+
+  // if(nomor_akuarium == 9){
+  //   value_tds = (0.542 * value_tds) + -16.1;
+  // }
+
+  if(nomor_akuarium == 10){
+    value_tds = (0.297 * value_tds) + -4.05;
+  }
+  
+  // if(nomor_akuarium == 11){
+  //   value_tds = (0.572 * value_tds) + -30.8;
+  // }
+
+  if(nomor_akuarium == 12){
+    value_tds = (0.552 * value_tds) + -0.276;
+  }
+
 }
 
 void tdsPrintToSerialMonitor(){
