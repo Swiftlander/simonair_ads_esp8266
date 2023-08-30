@@ -7,7 +7,7 @@ int indikator = 2;
 // ====================================================
 
 // Hanya support akuarium 7 sampai 12
-const int nomor_akuarium = 7;
+const int nomor_akuarium = 9;
 
 unsigned long currentTime = 0;
 
@@ -34,7 +34,7 @@ unsigned long prevCurrentTimeSend = 0;
 unsigned long intervalPrintTime = 2000;
 unsigned long prevCurrentTimePrint = 0;
 
-unsigned long intervalSendDataTime = 15000;
+unsigned long intervalSendDataTime = 20000;
 unsigned long prevCurrentTimeSendData = 0;
 
 unsigned long intervalPrintSerialWebTime = 10000;
@@ -98,6 +98,7 @@ void loop(){
     if(currentTime - prevCurrentTimeSendData >= intervalSendDataTime){
       if (WiFi.status() == WL_CONNECTED){
         sendData();
+        // sendDataVoltage();
       }
       prevCurrentTimeSendData = currentTime;
     }

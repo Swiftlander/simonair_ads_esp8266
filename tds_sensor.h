@@ -28,29 +28,28 @@ void tdsSensor()
   value_tds = (133.42 * compensationVoltage * compensationVoltage * compensationVoltage - 255.86 * compensationVoltage * compensationVoltage + 857.39 * compensationVoltage) * 1;
   
   if(nomor_akuarium == 7){
-    value_tds = (0.528 * value_tds) + -14;
+    value_tds = (0.419 * value_tds) + 33.3;
   }
   
   if(nomor_akuarium == 8){
-    value_tds = (0.511 * value_tds) + -14.5;
+    value_tds = (0.42 * value_tds) + 27;
   }
 
-  // if(nomor_akuarium == 9){
-  //   value_tds = (0.542 * value_tds) + -16.1;
-  // }
+  if(nomor_akuarium == 9){
+    value_tds = (0.433 * value_tds) + 30.7;
+  }
 
   if(nomor_akuarium == 10){
-    value_tds = (0.297 * value_tds) + -4.05;
+    value_tds = (0.224 * value_tds) + 49.4;
   }
-  
-  // if(nomor_akuarium == 11){
-  //   value_tds = (0.572 * value_tds) + -30.8;
-  // }
+
+  if(nomor_akuarium == 11){
+    value_tds = (0.542 * value_tds) + -16.1;
+  }
 
   if(nomor_akuarium == 12){
-    value_tds = (0.552 * value_tds) + -0.276;
+    value_tds = (0.483 * value_tds) + 27.6;
   }
-
 }
 
 void tdsPrintToSerialMonitor(){

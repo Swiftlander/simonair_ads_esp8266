@@ -41,17 +41,17 @@ void phSensor(){
 
     if(nomor_akuarium == 9){
       value_ph = (voltage_ph - 3.8829) / -0.1848;
-      // value_ph = -0.0753 * value_ph + 8.52;
+      value_ph = -1.74E-03 * value_ph + 7.98;
     }
 
-    // if(nomor_akuarium == 10){
-    //   value_ph = (voltage_ph - 3.7436) / -0.1693;
-    //   value_ph = 0.752 * value_ph + 2.69;
-    // }
+    if(nomor_akuarium == 10){
+      value_ph = (voltage_ph - 3.7436) / -0.1693;
+      value_ph = 0.752 * value_ph + 2.69;
+    }
 
     if(nomor_akuarium == 11){
       value_ph = (voltage_ph - 3.8356) / -0.1746;
-      // value_ph = 0.752 * value_ph + 2.69;
+      value_ph = -0.0231 * value_ph + 8.29;
     }
 
     if(nomor_akuarium == 12){

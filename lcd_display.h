@@ -122,15 +122,35 @@ void statusQualityText(int quality_row, int lcdColumns, float temperature_val, f
   String quality_message;
   int status_num_quality = 0;
 
-  if (mq_val < 0.1) {
-    if (ph_val >= 6 && ph_val <= 8.5) {
-      if (temperature_val >= 28 && temperature_val <= 32) {
-        if (tds_val < 1000 and (tds_val > 3.8 || salinity_val >= 0 && salinity_val <= 0.4)) {
-          status_num_quality = 1;
-        }
-      }
+  if (temperature_val >= 22 && temperature_val <= 27) {
+    if(mq_val < 2 && (ph_val >= 6 || ph_val <= 9) && tds_val <= 400){
+      status_num_quality = 1;
+    } else{
+      status_num_quality = 0;
     }
   }
+
+  // if (mq_val < 1.0 && (ph_val >= 6 || ph_val <= 8) && tds_val < 1000) {
+  //   if (temperature_val >= 25 && temperature_val <= 27) {
+  //     status_num_quality = 1;
+  //   }
+  // }
+
+  // if (mq_val < 1.0 && (ph_val >= 6 || ph_val <= 8) && tds_val < 1000) {
+  //   if (temperature_val >= 25 && temperature_val <= 27) {
+  //     status_num_quality = 1;
+  //   }
+  // }
+
+  // if (mq_val < 0.1) {
+  //   if (ph_val >= 6 && ph_val <= 8.5) {
+  //     if (temperature_val >= 28 && temperature_val <= 32) {
+  //       if (tds_val < 1000 and (tds_val > 3.8 || salinity_val >= 0 && salinity_val <= 0.4)) {
+  //         status_num_quality = 1;
+  //       }
+  //     }
+  //   }
+  // }
 
   if (status_num_quality == 1){
     quality_message = "Kualitas: Baik";
